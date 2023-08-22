@@ -1,0 +1,19 @@
+.container {
+  display: flex;
+  width: 300px;
+}
+
+.card-container {
+  flex: 1 0 0;
+  overflow-x: hidden;
+}
+
+.card-container:last-child {
+  flex: 0 0 auto;
+}
+
+.card {
+  background: linear-gradient(to right, #ccc 0%, #444 100%);
+  width: 100px;
+  height: 150px;
+}

@@ -1,0 +1,52 @@
+.mainBlock {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  box-sizing: border-box;
+  grid-column-gap: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  overflow: scroll;
+  background-color: brown;
+  border-radius: 1rem;
+  padding: 1rem 3vw;
+  /* border: 0.5rem solid var(--color-primary-variant); */
+}
+
+.overlap {
+  margin-top: -130%;
+}
+
+.mainBlock > div:nth-child(-n + 4) {
+  margin-top: 0%;
+}
+
+.card > img {
+  --card-width: 10vh;
+
+  width: var(--card-width);
+  height: calc(var(--card-width) * 1.5);
+
+  box-shadow: 2px 2px 2px 2px #00000077;
+  border-radius: 5px;
+}
+
+/* For Mobile Portrait View */
+@media screen and (max-device-width: 480px) and (orientation: portrait) {
+  .card > img {
+    --card-width: calc(100vw / 7);
+
+    width: var(--card-width);
+    height: calc(var(--card-width) * 1.5);
+
+    box-shadow: 2px 2px 2px 2px #00000077;
+    border-radius: 5px;
+
+    /* padding: 0.1rem; */
+  }
+
+  .mainBlock {
+    padding: 0.5rem 0.5rem;
+    grid-column-gap: 0.5rem;
+
+    /* border: 0.5rem solid var(--color-primary-variant); */
+  }
+}

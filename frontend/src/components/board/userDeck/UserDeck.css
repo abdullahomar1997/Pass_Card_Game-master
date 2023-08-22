@@ -1,0 +1,85 @@
+.player_1,
+.player_2,
+.player_3,
+.player_4 {
+  display: grid;
+  grid-template-columns: repeat(14, 15px);
+  grid-gap: 0.5rem;
+}
+
+.player_1 {
+  grid-gap: 0.5rem;
+}
+
+.player_2 {
+  /* transform: rotate(180deg); */
+}
+
+.player_3 {
+  transform: rotate(90deg);
+}
+
+.player_4 {
+  transform: rotate(90deg);
+}
+
+.userCard > img,
+.cpuCard > img {
+  --card-width: 10vh;
+
+  width: var(--card-width);
+  height: calc(var(--card-width) * 1.5);
+
+  box-shadow: 2px 2px 2px 2px #00000077;
+  border-radius: 5px;
+
+  transition: all 0.1s ease-in-out;
+}
+
+.userCard:hover {
+  transform: scale(1.05) translateY(-8px);
+  transition: all 0.1s ease-in-out;
+  cursor: pointer;
+}
+
+/* For Mobile Portrait View */
+@media screen and (max-device-width: 480px) and (orientation: portrait) {
+  .player_1,
+  .player_2,
+  .player_3,
+  .player_4 {
+    grid-gap: 0rem;
+  }
+
+  .player_1 {
+    display: flex;
+    flex-wrap: wrap;
+    grid-gap: 0rem;
+  }
+
+  .player_3 {
+    margin-left: calc((100vw / 7) * 1.5 * -1 * 0.5);
+  }
+
+  .player_2 {
+    margin-right: calc(((100vw / 7) - 15px));
+    grid-template-rows: 1px;
+    margin-top: calc((100vw / 7) * 1.5 * -1 * 0.75);
+  }
+
+  .player_4 {
+    margin-right: calc((100vw / 7) * 1.5 * -1 * 0.5);
+  }
+
+  /* .userCard > img,
+  .cpuCard > img {
+    --card-width: calc(100vw / 7);
+
+    width: var(--card-width);
+    height: calc(var(--card-width) * 1.5);
+
+    box-shadow: 2px 2px 2px 2px #00000077;
+    border-radius: 5px;
+
+  } */
+}

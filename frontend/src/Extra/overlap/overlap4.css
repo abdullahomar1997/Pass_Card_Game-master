@@ -1,0 +1,11 @@
+.card {
+  --card-width: 100px;
+
+  margin-right: calc(25px - var(--card-width));
+  float: left;
+
+  width: var(--card-width);
+  height: calc(var(--card-width) * 1.5);
+  border: 1px solid black;
+  background: white;
+}

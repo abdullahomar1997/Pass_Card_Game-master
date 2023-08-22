@@ -1,0 +1,13 @@
+.cards {
+  display: table;
+  table-layout: fixed;
+  width: 50%;
+  max-width: 700px;
+}
+.cards > div {
+  display: table-cell;
+  width: 100px;
+}
+.cards > div > img {
+  display: block;
+}

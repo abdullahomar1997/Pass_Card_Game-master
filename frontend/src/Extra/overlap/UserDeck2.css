@@ -1,0 +1,38 @@
+/* .player1 {
+  position: absolute;
+  bottom: 0px;
+  border: 0.5rem solid var(--color-primary-variant);
+  display: grid;
+  grid-gap: 0.5rem;
+  grid-template-columns: repeat(14, 15px);
+  align-items: center;
+} */
+
+/* .userCard > img {
+  box-shadow: 2px 2px 2px 2px #00000077;
+  border-radius: 5px;
+  background-color: #ffffff;
+  width: 120px;
+  width: 6vw;
+  height: 15vh;
+} */
+
+/* .player1 {
+  display: flex;
+  width: 300px;
+}
+
+.userCard {
+  flex: 1 0 0;
+  overflow-x: hidden;
+}
+
+.userCard:last-child {
+  flex: 0 0 auto;
+}
+
+.userCard > img {
+  background: linear-gradient(to right, #ccc 0%, #444 100%);
+  width: 100px;
+  height: 150px;
+} */
