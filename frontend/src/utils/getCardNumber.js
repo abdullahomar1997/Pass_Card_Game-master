@@ -16,9 +16,7 @@ const getCardNumber = (cardSign) => {
     map.set("king", 13);
     map.set("ace", 14);
 
-
     return map.get(cardSign);
-
 }
 
 export default getCardNumber;

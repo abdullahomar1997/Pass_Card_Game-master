@@ -1,14 +1,15 @@
 import React from "react";
 import styled from "styled-components";
 
-const CpuDeck = ({ boardDeck, setBoardDeck, players, setPlayers, classN }) => {
+const CpuDeck = ({ boardDeck, setBoardDeck, players, setPlayers, classN,playerNum }) => {
   return (
     <PlayerContainer className={classN}>
       {boardDeck
-      .filter((c) => c.player === "0")
+      .filter((c) => c.player === playerNum)
       .map((card, index) => (
         <CpuCard key={index}>
-          <CpuCardImage src={require('../../../assets/deck/pass.png')} alt="me" />
+          {/* <CpuCardImage src={require('../../../assets/deck/pass.png')} alt="me" /> */}
+          <CpuCardImage visibility={card.userCardVisibility} src={require(`../../../assets/deck/${card.cardName}`)} alt="me"/>
         </CpuCard>
       ))}
     

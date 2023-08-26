@@ -4,14 +4,18 @@ import styled from "styled-components";
 
 const UserDeck = ({ boardDeck, setBoardDeck, players, setPlayers, classN }) => {
 
+  console.log(boardDeck)
+
   const playCard = (playedCard, boardDeck, players, setBoardDeck, setPlayers) => {
     if (playedCard.isPlayable) {
-      setBoardDeck(updateDeck(playedCard, boardDeck));
 
-      // updatePlayersOnCardPlay(players, updateDeck(playedCard, boardDeck));
+      setBoardDeck(updateDeck(playedCard, boardDeck,"1"));
+
+      // console.log("board",boardDeck);
+
       (async () => {
         try {
-          await updatePlayersOnCardPlay2(players,  updateDeck(playedCard, boardDeck));
+          await updatePlayersOnCardPlay(players, updateDeck(playedCard, boardDeck,"1"));
           console.log("All iterations have completed.");
         } catch (error) {
           console.error("An error occurred:", error);
@@ -23,17 +27,17 @@ const UserDeck = ({ boardDeck, setBoardDeck, players, setPlayers, classN }) => {
     }
   };
 
-  const updatePlayersOnCardPlay2 = async (players, updatedDeck) => {
+  const updatePlayersOnCardPlay = async (players, updatedDeck) => {
     const updatedPlayers = [...players];
 
-    await new Promise(resolve => setTimeout(resolve, 3000));
+    await new Promise(resolve => setTimeout(resolve, 1500));
   
     for (let j = 1; j < updatedPlayers.length; ++j) {
       const playedCard = findHiddenPlayableCard(updatedPlayers[j].id, updatedDeck);
   
       if (playedCard) {
         updatedPlayers[j].numCards -= 1;
-        updatedDeck = updateDeck(playedCard, updatedDeck);
+        updatedDeck = updateDeck(playedCard, updatedDeck,(j+1).toString());
       } else {
         updatedPlayers[j].numPasses += 1;
       }
@@ -41,26 +45,7 @@ const UserDeck = ({ boardDeck, setBoardDeck, players, setPlayers, classN }) => {
       setPlayers(updatedPlayers);
       setBoardDeck(updatedDeck);
   
-      // Introduce a delay of 3 seconds
-      await new Promise(resolve => setTimeout(resolve, 3000));
-    }
-  };
-  
-
-  const updatePlayersOnCardPlay = (players, updatedDeck) => {
-    const updatedPlayers = [...players];
-  
-    for (let j = 1; j < updatedPlayers.length; ++j) {
-      const playedCard = findHiddenPlayableCard(updatedPlayers[j].id, updatedDeck);
-  
-      if (playedCard) {
-        updatedPlayers[j].numCards -= 1;
-        updatedDeck = updateDeck(playedCard, updatedDeck);
-      } else {
-        updatedPlayers[j].numPasses += 1;
-      }
-      setPlayers(updatedPlayers);
-      setBoardDeck(updatedDeck);
+        await new Promise(resolve => setTimeout(resolve, 1500));
     }
   };
   
@@ -78,7 +63,7 @@ const UserDeck = ({ boardDeck, setBoardDeck, players, setPlayers, classN }) => {
       {boardDeck
       .filter((c) => c.player === "0")
       .map((card, index) => (
-        <UserCard key={index} onClick={() => playCard(card, boardDeck, players, setBoardDeck, setPlayers)}>
+        <UserCard ismoving={card.isMoving.toString()} per={card.per} per2={card.per2} position={card.position} key={index} onClick={() => playCard(card, boardDeck, players, setBoardDeck, setPlayers)}>
           <UserCardImage visibility={card.userCardVisibility} src={require(`../../../assets/deck/${card.cardName}`)} alt="me"/>
         </UserCard>
       ))}
@@ -90,9 +75,21 @@ const UserDeck = ({ boardDeck, setBoardDeck, players, setPlayers, classN }) => {
 };
 
 export default UserDeck;
-
+//-225 -110 10 122
 const UserCard = styled.div`
+  position: ${(props) => (props.ismoving === 'true' ? "absolute" : '')};
+  transform: ${(props) => (props.ismoving === 'true' ? `translate(0px, -275%)` : 'none')};
+  /* transform: ${(props) => (props.ismoving === 'true' ? `translate(${props.per2}%, ${props.per}%)` : 'none')}; */
+  left: ${(props) => (props.ismoving === 'true' ? "50%" : 'auto')};
+  transition: transform 0.5s ease;
   cursor: pointer;
+/* 
+  left: ${(props) => (props.ismoving === 'true' ? "50%" : '-100%')};
+  top: ${(props) => (props.ismoving === 'true' ? "50%" : '-100%')};
+  transform: ${(props) => (props.ismoving === 'true' ? 'translate(-50%, -50%)' : 'none')};
+  transition: left 0.5s ease, top 0.5s ease, transform 0.5s ease;
+  transition-delay: 0.1s; /* Adding a slight delay for smoother transition */
+  /* cursor: pointer;  */
 
   &:hover {
     transform: scale(1.05) translateY(-8px);
@@ -118,6 +115,7 @@ const PlayerContainer = styled.div`
 
   &.player_1 {
     /* grid-gap: 0.5rem; */
+    background-color: red;
   }
   &.player_2 {
       /* transform: rotate(180deg); */

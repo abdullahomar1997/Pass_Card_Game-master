@@ -33,6 +33,7 @@ useEffect(() => {
           players={players}
           setPlayers={setPlayers}
           classN={"player_1"}
+          playerNum=""
         />  
       </PlayerContainer>
       <PlayerContainer className="player2">
@@ -42,6 +43,7 @@ useEffect(() => {
           players={players}
           setPlayers={setPlayers}
           classN={"player_2"}
+          playerNum="1"
         />
       </PlayerContainer>    
       <PlayerContainer className="player3">
@@ -51,6 +53,7 @@ useEffect(() => {
           players={players}
           setPlayers={setPlayers}
           classN={"player_3"}
+          playerNum="2"
         />
       </PlayerContainer>
       <PlayerContainer className="player4">
@@ -60,6 +63,7 @@ useEffect(() => {
           players={players}
           setPlayers={setPlayers}
           classN={"player_4"}
+          playerNum="3"
         />
       </PlayerContainer>
       <PlayerContainer className="played">
@@ -98,7 +102,7 @@ const PlayerContainer = styled.div`
 
   &.player1 {
     grid-area: player1;
-    background-color: green;
+    /* background-color: green; */
     justify-self: center;
 
     /* margin-bottom: 100px; */
@@ -106,7 +110,7 @@ const PlayerContainer = styled.div`
 
   &.player2 {
     grid-area: player2;
-    background-color: red;
+    /* background-color: red; */
     justify-self: center;
 
     /* align-self: center; */
@@ -115,7 +119,7 @@ const PlayerContainer = styled.div`
   &.player3 {
     grid-area: player3;
     align-self: center;
-    background-color: red;
+    /* background-color: red; */
     justify-self: center;
 
   
@@ -124,7 +128,7 @@ const PlayerContainer = styled.div`
   &.player4 {
     grid-area: player4;
     align-self: center;
-    background-color: green;
+    /* background-color: green; */
     justify-self: center;
   }
 
