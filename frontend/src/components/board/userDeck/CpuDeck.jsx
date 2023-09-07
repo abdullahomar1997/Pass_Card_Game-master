@@ -8,8 +8,8 @@ const CpuDeck = ({ boardDeck, setBoardDeck, players, setPlayers, classN,playerNu
       .filter((c) => c.player === playerNum)
       .map((card, index) => (
         <CpuCard key={index}>
-          {/* <CpuCardImage src={require('../../../assets/deck/pass.png')} alt="me" /> */}
-          <CpuCardImage visibility={card.userCardVisibility} src={require(`../../../assets/deck/${card.cardName}`)} alt="me"/>
+          <CpuCardImage src={require('../../../assets/deck/pass.png')} alt="me" />
+          {/* <CpuCardImage visibility={card.userCardVisibility} src={require(`../../../assets/deck/${card.cardName}`)} alt="me"/> */}
         </CpuCard>
       ))}
     
@@ -38,12 +38,15 @@ const PlayerContainer = styled.div`
   display: grid;
   grid-template-columns: repeat(14, 15px);
   grid-gap: 2px;
+  /* margin-bottom:10px; */
+  align-items: center;
 
   &.player_1 {
     /* grid-gap: 0.5rem; */
   }
   &.player_2 {
       /* transform: rotate(180deg); */
+      background-color: yellow;
   }
   &.player_3 {
     transform: rotate(90deg);

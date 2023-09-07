@@ -4,7 +4,7 @@ import styled from "styled-components";
 
 const UserDeck = ({ boardDeck, setBoardDeck, players, setPlayers, classN }) => {
 
-  console.log(boardDeck)
+  console.log(boardDeck.length)
 
   const playCard = (playedCard, boardDeck, players, setBoardDeck, setPlayers) => {
     if (playedCard.isPlayable) {
@@ -59,9 +59,20 @@ const UserDeck = ({ boardDeck, setBoardDeck, players, setPlayers, classN }) => {
   };
 
   return (
-    <PlayerContainer className={classN}>
-      {boardDeck
-      .filter((c) => c.player === "0")
+    <Container>
+       <Row1>
+       {boardDeck
+      .filter((c) => c.player === "0").slice(7,100)
+      .map((card, index) => (
+        <UserCard ismoving={card.isMoving.toString()} per={card.per} per2={card.per2} position={card.position} key={index} onClick={() => playCard(card, boardDeck, players, setBoardDeck, setPlayers)}>
+          <UserCardImage visibility={card.userCardVisibility} src={require(`../../../assets/deck/${card.cardName}`)} alt="me"/>
+        </UserCard>
+      ))}
+       </Row1>
+       
+       <Row2>
+           {boardDeck
+      .filter((c) => c.player === "0").slice(0,6)
       .map((card, index) => (
         <UserCard ismoving={card.isMoving.toString()} per={card.per} per2={card.per2} position={card.position} key={index} onClick={() => playCard(card, boardDeck, players, setBoardDeck, setPlayers)}>
           <UserCardImage visibility={card.userCardVisibility} src={require(`../../../assets/deck/${card.cardName}`)} alt="me"/>
@@ -70,7 +81,21 @@ const UserDeck = ({ boardDeck, setBoardDeck, players, setPlayers, classN }) => {
     <UserCard onClick={() => OnPassPlayedHandler()}>
       <UserCardImage src={require(`../../../assets/deck/pass.png`)} alt="pass" />
     </UserCard>
-    </PlayerContainer>
+       </Row2>
+    </Container>
+    // <PlayerContainer className={classN}>
+    //   {boardDeck
+    //   .filter((c) => c.player === "0").slice(0,6)
+    //   .map((card, index) => (
+    //     <UserCard ismoving={card.isMoving.toString()} per={card.per} per2={card.per2} position={card.position} key={index} onClick={() => playCard(card, boardDeck, players, setBoardDeck, setPlayers)}>
+    //       <UserCardImage visibility={card.userCardVisibility} src={require(`../../../assets/deck/${card.cardName}`)} alt="me"/>
+    //     </UserCard>
+    //   ))}
+    // <UserCard onClick={() => OnPassPlayedHandler()}>
+    //   <UserCardImage src={require(`../../../assets/deck/pass.png`)} alt="pass" />
+    // </UserCard>
+    // </PlayerContainer>
+   
   );
 };
 
@@ -91,6 +116,30 @@ const UserCard = styled.div`
   transition-delay: 0.1s; /* Adding a slight delay for smoother transition */
   /* cursor: pointer;  */
 
+  @media screen and (max-device-width: 480px) and (orientation: portrait) {
+    /* &:first-child {
+      transform: translateY(5%) translateX(25%) rotateZ(-15deg);
+    }
+    &:nth-child(2) {
+      transform: translateX(-15%);    
+    }
+    &:nth-child(3) {
+      transform: translateX(-50%);    
+    }
+     &:nth-child(4) {
+      transform: translateX(-85%);    
+    }
+    &:nth-child(5) {
+      transform: translateX(-125%);    
+    }
+    &:nth-child(6) {
+      transform: translateX(-165%);    
+    }
+    &:last-child {
+      transform: translateY(5%) translateX(-205%) rotateZ(15deg);
+    } */
+  }
+
   &:hover {
     transform: scale(1.05) translateY(-8px);
     transition: all 0.1s ease-in-out;
@@ -99,7 +148,7 @@ const UserCard = styled.div`
 `;
 
 const UserCardImage = styled.img`
-  --card-width: 10vh;
+  --card-width:8vh;
   width: var(--card-width);
   height: calc(var(--card-width) * 1.5);
   /* box-shadow: 2px 2px 2px 2px #00000077; */
@@ -112,10 +161,30 @@ const PlayerContainer = styled.div`
   display: grid;
   grid-template-columns: repeat(14, 15px);
   grid-gap: 0.5rem;
+  width: 100%;
+  height: 100%;
+
+  
+  @media screen and (max-device-width: 480px) and (orientation: portrait) {
+    /* grid-gap: 10px; Adjust the gap between items as needed */
+    /* max-width: 700px; Adjust the maximum width as needed */
+    /* margin: 0 auto; Center the grid horizontally */
+    /* background-color:pink; */
+    display: flex;
+    grid-gap: 0;
+    /* flex-direction: column; */
+    /* margin-right: 30px; */
+    position: relative;
+    /* justify-self: center; */
+  }
+
+  //13
+  //18
+  //26
 
   &.player_1 {
     /* grid-gap: 0.5rem; */
-    background-color: red;
+    /* background-color: red; */
   }
   &.player_2 {
       /* transform: rotate(180deg); */
@@ -127,5 +196,34 @@ const PlayerContainer = styled.div`
     /* transform: rotate(90deg); */
   }
 `;
+
+const Row1 = styled.div`
+  /* background-color: black; */
+  height: 12vh;
+  width: 100%;
+  display: flex;
+  grid-gap: 0;
+  position: relative;
+  /* bottom: -60px; */
+`;
+
+const Row2 = styled.div`
+  /* background-color: yellow; */
+  height: 12vh;
+  width: 100%;
+  display: flex;
+  grid-gap: 0;
+  position: relative;
+  /* bottom: -30px; */
+`;
+const Container = styled.div`
+  /* background-color: pink; */
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  /* background-color: green; */
+`;
+
+
 
 

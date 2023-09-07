@@ -91,10 +91,14 @@ const BoardContainer = styled.div`
     "player1 player1 player1";
 
   @media screen and (max-width: 480px) and (orientation: portrait) {
-    background-color: yellow;
-    height: calc(100vh - 65px);
-    grid-template-rows: calc((100vw / 7) * 1.5 * 0.1) auto calc((100vw / 7) * 1.5 * 2);
-    grid-template-columns: 0px auto 0px;
+    /* background-color: yellow; */
+    /* height: calc(100vh - 65px); */
+    height: 100vh;
+    /* grid-template-rows: calc((100vw / 7) * 1.5 * 0.1) auto calc((100vw / 7) * 1.5 * 3); */
+    grid-template-rows: 3vh auto 24vh;
+    grid-template-columns: 3vh auto 3vh;
+    /* margin-top: -11.5vh; */
+
   }
 `;
 
@@ -102,25 +106,25 @@ const PlayerContainer = styled.div`
 
   &.player1 {
     grid-area: player1;
-    /* background-color: green; */
     justify-self: center;
+    align-items: end;
+  
+    /* width: 100%; */
+    /* height: 100%; */
 
     /* margin-bottom: 100px; */
   }
 
   &.player2 {
     grid-area: player2;
-    /* background-color: red; */
     justify-self: center;
-
-    /* align-self: center; */
   }
 
   &.player3 {
     grid-area: player3;
-    align-self: center;
+    /* align-self: center; */
     /* background-color: red; */
-    justify-self: center;
+    /* justify-self: center; */
 
   
   }
@@ -138,22 +142,40 @@ const PlayerContainer = styled.div`
     justify-self: center;
 
     @media screen and (max-device-width: 480px) and (orientation: portrait) {
-      background-color: red;
+      /* background-color: red; */
     }
   }
 
   @media screen and (max-device-width: 480px) and (orientation: portrait) {
+
     &.player1 {
-      background-color: brown;
+      /* background-color: green; */
+      width: 100%;
+      height: 100%;
     }
     &.player2 {
-      background-color: aqua;
+      /* width: 100%; */
+      /* height: 100%; */
+      overflow: hidden;
+
     }
     &.player3 {
       /* background-color: blueviolet; */
+      /* width: 100%; */
+      /* height: 100%; */
+      /* background-color: red; */
+      overflow: hidden;
+      margin-top:55px;
+
+
     }
     &.player4 {
       /* background-color: yellow; */
+      width: 100%;
+      height: 100%;
+      /* background-color: red; */
+      overflow: hidden;
+      margin-top: 110px;
     }
   }
 `;
