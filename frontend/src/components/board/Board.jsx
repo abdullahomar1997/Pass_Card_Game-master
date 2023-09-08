@@ -6,6 +6,9 @@ import assignCards from "../../utils/assignCards";
 import createPlayers from "../../utils/createPlayers";
 import CpuDeck from "./userDeck/CpuDeck";
 import styled from "styled-components";
+import { MdOutlineSettings } from "react-icons/md";
+import { RiArrowLeftSLine } from "react-icons/ri";
+
 
 const Board = () => {
 
@@ -25,6 +28,15 @@ useEffect(() => {
 
 
   return (
+    <>
+    <MenuContainer>
+    <HeaderIcon>
+      <RiArrowLeftSLine />
+    </HeaderIcon>
+    <HeaderIcon>
+      <MdOutlineSettings />
+    </HeaderIcon>
+  </MenuContainer>
     <BoardContainer>
       <PlayerContainer className="player1">
         <MyDeck
@@ -70,17 +82,21 @@ useEffect(() => {
         <Played players={players} boardDeck={boardDeck} />
       </PlayerContainer>
     </BoardContainer>
+    </>
   );
 };
 
 export default Board;
 
 const BoardContainer = styled.div`
-  position: fixed;
-  height: calc(100vh - 60px);
-  height: 100vh;
-  width: 100vw;
+  /* position: fixed; */
+  /* height: calc(100vh - 60px); */
+  height: 91vh;
+  /* width: 100%; */
   display: grid;
+  border : 1px solid white;
+  border-radius: 20px;
+  margin: 0px 2vw;
 
   grid-template-columns: 15vh auto 15vh;
   grid-template-rows: 15vh auto 15vh;
@@ -93,10 +109,10 @@ const BoardContainer = styled.div`
   @media screen and (max-width: 480px) and (orientation: portrait) {
     /* background-color: yellow; */
     /* height: calc(100vh - 65px); */
-    height: 100vh;
+    /* height: 100vh; */
     /* grid-template-rows: calc((100vw / 7) * 1.5 * 0.1) auto calc((100vw / 7) * 1.5 * 3); */
-    grid-template-rows: 3vh auto 24vh;
-    grid-template-columns: 3vh auto 3vh;
+    grid-template-rows: 2vh auto 24vh;
+    grid-template-columns: 2vh auto 2vh;
     /* margin-top: -11.5vh; */
 
   }
@@ -178,4 +194,26 @@ const PlayerContainer = styled.div`
       margin-top: 110px;
     }
   }
+`;
+
+const MenuContainer = styled.div`
+  height: 8vh;
+  background-color: #191a1f;
+  background-color: rgb(13,22,29);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0px 7vw;
+  /* background-color: red ; */
+`
+
+const HeaderIcon = styled.div`
+  font-size: 1.3em;
+  background-color: black;
+  padding: 8px;
+  border-radius: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* border: 0.1px solid white; */
 `;

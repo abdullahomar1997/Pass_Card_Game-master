@@ -26,7 +26,7 @@ const CpuCard = styled.div`
 `;
 
 const CpuCardImage = styled.img`
-  --card-width: 10vh;
+  --card-width: 7vh;
   width: var(--card-width);
   height: calc(var(--card-width) * 1.5);
   /* box-shadow: 2px 2px 2px 2px #00000077; */
