@@ -148,7 +148,7 @@ const UserCard = styled.div`
 `;
 
 const UserCardImage = styled.img`
-  --card-width:7.5vh;
+  /* --card-width:7.5vh; */
   --card-width:calc(100vw/7);
   width: var(--card-width);
   height: calc(var(--card-width) * 1.5);

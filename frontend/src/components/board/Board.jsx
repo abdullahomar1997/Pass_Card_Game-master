@@ -111,8 +111,8 @@ const BoardContainer = styled.div`
     /* height: calc(100vh - 65px); */
     /* height: 100vh; */
     /* grid-template-rows: calc((100vw / 7) * 1.5 * 0.1) auto calc((100vw / 7) * 1.5 * 3); */
-    grid-template-rows: 2vh auto 24vh;
-    grid-template-columns: 2vh auto 2vh;
+    grid-template-rows: 1vh auto 24vh;
+    grid-template-columns: 1vh auto 1vh;
     /* margin-top: -11.5vh; */
 
   }
