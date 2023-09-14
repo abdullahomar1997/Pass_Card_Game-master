@@ -59,20 +59,33 @@ const UserDeck = ({ boardDeck, setBoardDeck, players, setPlayers, classN }) => {
   };
 
   return (
-    <Container>
-       <Row1>
-       {boardDeck
-      .filter((c) => c.player === "0").slice(7,100)
-      .map((card, index) => (
-        <UserCard ismoving={card.isMoving.toString()} per={card.per} per2={card.per2} position={card.position} key={index} onClick={() => playCard(card, boardDeck, players, setBoardDeck, setPlayers)}>
-          <UserCardImage visibility={card.userCardVisibility} src={require(`../../../assets/deck/${card.cardName}`)} alt="me"/>
-        </UserCard>
-      ))}
-       </Row1>
-       
-       <Row2>
-           {boardDeck
-      .filter((c) => c.player === "0").slice(0,6)
+    // <Container>
+    //   <Row1>
+    //     {boardDeck
+    //       .filter((c) => c.player === "0").slice(7,100)
+    //       .map((card, index) => (
+    //         <UserCard ismoving={card.isMoving.toString()} per={card.per} per2={card.per2} position={card.position} key={index} onClick={() => playCard(card, boardDeck, players, setBoardDeck, setPlayers)}>
+    //           <UserCardImage visibility={card.userCardVisibility} src={require(`../../../assets/deck/${card.cardName}`)} alt="me"/>
+    //         </UserCard>
+    //       ))}
+    //   </Row1>
+      
+    //   <Row2>
+    //     {boardDeck
+    //       .filter((c) => c.player === "0").slice(0,6)
+    //       .map((card, index) => (
+    //         <UserCard ismoving={card.isMoving.toString()} per={card.per} per2={card.per2} position={card.position} key={index} onClick={() => playCard(card, boardDeck, players, setBoardDeck, setPlayers)}>
+    //           <UserCardImage visibility={card.userCardVisibility} src={require(`../../../assets/deck/${card.cardName}`)} alt="me"/>
+    //         </UserCard>
+    //       ))}
+    //     <UserCard onClick={() => OnPassPlayedHandler()}>
+    //       <UserCardImage src={require(`../../../assets/deck/pass.png`)} alt="pass" />
+    //     </UserCard>
+    //   </Row2>
+    // </Container>
+    <PlayerContainer className={classN}>
+      {boardDeck
+      .filter((c) => c.player === "0")
       .map((card, index) => (
         <UserCard ismoving={card.isMoving.toString()} per={card.per} per2={card.per2} position={card.position} key={index} onClick={() => playCard(card, boardDeck, players, setBoardDeck, setPlayers)}>
           <UserCardImage visibility={card.userCardVisibility} src={require(`../../../assets/deck/${card.cardName}`)} alt="me"/>
@@ -81,21 +94,7 @@ const UserDeck = ({ boardDeck, setBoardDeck, players, setPlayers, classN }) => {
     <UserCard onClick={() => OnPassPlayedHandler()}>
       <UserCardImage src={require(`../../../assets/deck/pass.png`)} alt="pass" />
     </UserCard>
-       </Row2>
-    </Container>
-    // <PlayerContainer className={classN}>
-    //   {boardDeck
-    //   .filter((c) => c.player === "0").slice(0,6)
-    //   .map((card, index) => (
-    //     <UserCard ismoving={card.isMoving.toString()} per={card.per} per2={card.per2} position={card.position} key={index} onClick={() => playCard(card, boardDeck, players, setBoardDeck, setPlayers)}>
-    //       <UserCardImage visibility={card.userCardVisibility} src={require(`../../../assets/deck/${card.cardName}`)} alt="me"/>
-    //     </UserCard>
-    //   ))}
-    // <UserCard onClick={() => OnPassPlayedHandler()}>
-    //   <UserCardImage src={require(`../../../assets/deck/pass.png`)} alt="pass" />
-    // </UserCard>
-    // </PlayerContainer>
-   
+    </PlayerContainer>
   );
 };
 
@@ -186,6 +185,12 @@ const PlayerContainer = styled.div`
   &.player_1 {
     /* grid-gap: 0.5rem; */
     /* background-color: red; */
+    display: flex;
+    flex-wrap: wrap;
+    grid-gap: 0.2rem;
+    justify-content: center;
+    align-items: flex-end; /* Align items to the end of the cross axis (bottom in this case) */
+    /* height: 24vh; */
   }
   &.player_2 {
       /* transform: rotate(180deg); */
@@ -205,6 +210,7 @@ const Row1 = styled.div`
   display: flex;
   grid-gap: 0;
   position: relative;
+  justify-content: space-between;
   /* bottom: -60px; */
 `;
 
@@ -219,8 +225,8 @@ const Row2 = styled.div`
 `;
 const Container = styled.div`
   /* background-color: pink; */
-  height: 100%;
-  width: 100%;
+  /* height: 100%; */
+  /* width: 100%; */
   position: absolute;
   /* background-color: green; */
 `;

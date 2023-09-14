@@ -123,7 +123,7 @@ const PlayerContainer = styled.div`
   &.player1 {
     grid-area: player1;
     justify-self: center;
-    align-items: end;
+    /* align-items: end; */
   
     /* width: 100%; */
     /* height: 100%; */
